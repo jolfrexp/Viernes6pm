@@ -1,5 +1,6 @@
 package com.library.apiLibrary.modelos;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -21,6 +22,7 @@ public class Libro {
     @OneToOne(targetEntity = Reparacion.class)
     private Reparacion reparacion; // un objeto para libro reparado
     @OneToMany(targetEntity = Prestamo.class, fetch = FetchType.LAZY, mappedBy = "libro")
+    @JsonManagedReference //varios (serializar y deserializar)
     private List<Prestamo> prestamo;
 
 }

@@ -1,5 +1,6 @@
 package com.library.apiLibrary.modelos;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -12,6 +13,8 @@ public class Prestamo {
     private LocalDate fechaprestamo;
     private LocalDate fechadevolucion;
     @ManyToOne(targetEntity = Libro.class)
+    @JoinColumn(referencedColumnName = "id")
+    @JsonBackReference
     private Libro libro;
 
 }
